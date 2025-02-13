@@ -16,13 +16,24 @@
         console.log(cart);
         showCart();
       };
+      const remove=(id)=>{
+        cart[id]-=1
+        console.log(cart);
+        showCart();
+      }
+
+      const add=(id)=>{
+        cart[id]+=1
+        console.log(cart);
+        showCart();
+      }
 
       const showCart = () => {
         let str = "";
         products.map((value) => {
           if (cart[value.id]) {
             str += `
-            <li>${value.name}-$${value.price}-<button>-</button>${cart[value.id]}<button>+</button>-${value.price*cart[value.id]}</li>
+            <li>${value.name}-$${value.price}-<button onclick=remove(${value.id})>-</button>${cart[value.id]}<button onclick=add(${value.id})>+</button>-${value.price*cart[value.id]}</li>
             `;
           }
         });
